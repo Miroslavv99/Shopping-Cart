@@ -10,12 +10,9 @@ const useProductData = () => {
 
     const getProductData = async () => {
       try {
-        const response = await fetch(
-          "https://api.escuelajs.co/api/v1/products",
-          {
-            signal: controller.signal,
-          },
-        );
+        const response = await fetch("https://fakestoreapi.com/products", {
+          signal: controller.signal,
+        });
 
         if (!response.ok) {
           throw new Error("Request Failed!");

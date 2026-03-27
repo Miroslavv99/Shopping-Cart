@@ -1,10 +1,11 @@
-import { Outlet } from "react-router";
+import { Outlet, useOutletContext } from "react-router";
 import Footer from "../components/Footer";
 
 function ShopLayout() {
+  const [cart, setCart] = useOutletContext();
   return (
     <>
-      <Outlet />
+      <Outlet context={[cart, setCart]} />
       <Footer />
     </>
   );

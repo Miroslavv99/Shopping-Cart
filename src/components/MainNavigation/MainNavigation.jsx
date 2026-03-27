@@ -4,7 +4,9 @@ import { Link } from "react-router";
 function MainNavigation() {
   return (
     <header className={styles.navigation}>
-      <h1>MONERI</h1>
+      <Link className="link" to="/">
+        <h1>MONERI</h1>
+      </Link>
       <div className={styles.links}>
         <Link className="link" to="/">
           Home
