@@ -1,7 +1,7 @@
 .home {
   color: rgb(255, 255, 255);
   display: flex;
-  background: url("../assets/images/home-background.jpeg");
+  background: url("src/assets/images/home-background.jpeg");
   background-position: center;
   background-size: cover;
   height: 100vh;
@@ -15,7 +15,7 @@
   position: relative;
   padding: 10px;
   top: 20%;
-  left: 18%;
+  left: 20vw;
   width: 100%;
   min-width: 100px;
   max-width: 300px;
@@ -36,25 +36,25 @@
   height: 50px;
 }
 
-h1 {
-  width: 40%;
+.homeLogo {
+  color: black;
+  width: auto;
   align-self: flex-end;
 }
 
-h2 {
+.home h2 {
   align-self: flex-start;
-  width: 50%;
+  width: auto;
   position: relative;
   top: 45%;
   left: 10%;
   font-size: 6vw;
 }
 
-p {
-  width: 70%;
+.home p {
+  width: auto;
 }
 
-span {
-  width: 100%;
+.home span {
   font-size: 90%;
 }

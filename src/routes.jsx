@@ -2,9 +2,9 @@ import { createBrowserRouter } from "react-router";
 import App from "./App";
 import ShopLayout from "./layouts/ShopLayout";
 import CartLayout from "./layouts/CartLayout";
-import Home from "./pages/Home";
-import Shop from "./pages/Shop";
-import Cart from "./pages/Cart";
+import Home from "./pages/Home/Home";
+import Shop from "./pages/Shop/Shop";
+import Cart from "./pages/Cart/Cart";
 
 const routes = createBrowserRouter([
   {

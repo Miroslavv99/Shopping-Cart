@@ -10,7 +10,7 @@ function Home() {
       </h2>
       <div className={styles.shopDescription}>
         <p>DESIGNER CLOTHES BY</p>
-        <h1>MONERI</h1>
+        <h1 className={styles.homeLogo}>MONERI</h1>
         <span>
           Monery is your destination for designer and comfortable clothes for
           any occasion.

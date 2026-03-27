@@ -1,0 +1,22 @@
+.navigation {
+  display: flex;
+  padding: 0 10% 0 10%;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  height: 10vh;
+  background-color: black;
+}
+
+.links {
+  display: flex;
+  width: 20%;
+  gap: 15%;
+}
+
+.navigation h1 {
+  cursor: pointer;
+  align-self: center;
+  color: rgb(255, 255, 255);
+}
