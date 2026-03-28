@@ -7,13 +7,14 @@
   top: 0;
   height: 10vh;
   background-color: black;
+  width: 100vw;
 }
 
 .links {
   display: flex;
   font-size: 1.2rem;
-  width: 20%;
-  gap: 15%;
+  width: 30%;
+  gap: 20px;
 }
 
 .navigation h1 {
@@ -21,4 +22,9 @@
   cursor: pointer;
   align-self: center;
   color: rgb(255, 255, 255);
+}
+
+.active {
+  color: rgb(182, 182, 182);
+  text-decoration: none;
 }

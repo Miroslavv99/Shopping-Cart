@@ -11,7 +11,7 @@ function Home() {
       <div className={styles.shopDescription}>
         <p>DESIGNER CLOTHES BY</p>
         <h1 className={styles.homeLogo}>MONERI</h1>
-        <span>
+        <span className={styles.homeDescription}>
           Monery is your destination for designer and comfortable clothes for
           any occasion.
         </span>

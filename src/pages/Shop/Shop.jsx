@@ -7,7 +7,7 @@ function Shop() {
   const { productData, errorMessage, loading } = useProductData();
   const [cart, setCart] = useOutletContext();
 
-  if (loading) return <h1>loading...</h1>;
+  if (loading) return <span className={styles.loading}>loading...</span>;
 
   console.log(productData);
   return (
