@@ -20,7 +20,7 @@ function ProductCard({ image, title, price, cart, setCart }) {
       <h4>{title}</h4>
       <span>{price}</span>
       <input type="number" onChange={handleInput} />
-      <button onClick={() => addToCart(title)}>ADD +</button>
+      <button onClick={() => addToCart({ title, image, price })}>ADD +</button>
     </div>
   );
 }
