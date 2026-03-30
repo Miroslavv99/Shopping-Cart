@@ -1,7 +1,10 @@
 import { useEffect, useState } from "react";
 
 const useProductData = () => {
-  const [productData, setProductData] = useState(null);
+  const [url, setUrl] = useState(
+    "https://dummyjson.com/products/category/fragrances",
+  );
+  const [productData, setProductData] = useState([]);
   const [errorMessage, setErrorMessage] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -10,7 +13,7 @@ const useProductData = () => {
 
     const getProductData = async () => {
       try {
-        const response = await fetch("https://fakestoreapi.com/products", {
+        const response = await fetch(url, {
           signal: controller.signal,
         });
 
@@ -36,9 +39,9 @@ const useProductData = () => {
     return () => {
       controller.abort();
     };
-  }, []);
+  }, [url]);
 
-  return { productData, errorMessage, loading };
+  return { setUrl, productData, errorMessage, loading };
 };
 
 export default useProductData;
