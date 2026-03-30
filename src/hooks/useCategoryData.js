@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 
 const useCategoryData = () => {
   const [categories, setCategories] = useState(null);
+  const [errorMessage, setErrorMessage] = useState(null);
   const [categoriesLoading, setCategoriesLoading] = useState(true);
 
   useEffect(() => {
@@ -23,6 +24,7 @@ const useCategoryData = () => {
         setCategories(parsedResponse);
       } catch (error) {
         if (error.name === "AbortError") return;
+        setErrorMessage(error.message);
       } finally {
         if (!controller.signal.aborted) {
           setCategoriesLoading(false);
@@ -37,7 +39,7 @@ const useCategoryData = () => {
     };
   }, []);
 
-  return { categories, categoriesLoading };
+  return { categories, errorMessage, categoriesLoading };
 };
 
 export default useCategoryData;

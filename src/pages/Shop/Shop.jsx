@@ -1,8 +1,8 @@
+import { useOutletContext } from "react-router";
 import styles from "./Shop.module.css";
 import useProductData from "../../hooks/useProductData";
 import CategoriesList from "../../components/CategoriesList/CategoriesList";
-import ProductCard from "../../components/ProductCard/ProductCard";
-import { useOutletContext } from "react-router";
+import ProductItem from "../../components/ProductItem/ProductItem";
 
 function Shop() {
   const [cart, setCart] = useOutletContext();
@@ -10,20 +10,18 @@ function Shop() {
     useProductData();
 
   if (productLoading) return <span className={styles.loading}>loading...</span>;
-
-  console.log(productData);
+  if (errorMessage) return <span>{errorMessage}</span>;
 
   return (
     <>
       <CategoriesList setUrl={setUrl} />
       <div className={styles.shop}>
-        {productData.products.map((el) => {
+        {productData.products.map((product) => {
           return (
-            <ProductCard
-              key={el.id}
-              product={el}
-              cart={cart}
-              setCart={setCart}
+            <ProductItem
+              key={product.id}
+              product={product}
+              context={[cart, setCart]}
             />
           );
         })}

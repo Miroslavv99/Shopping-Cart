@@ -1,10 +1,10 @@
 import useCategoryData from "../../hooks/useCategoryData";
-import { useOutletContext } from "react-router";
 
 function CategoriesList({ setUrl }) {
-  const { categories, categoriesLoading } = useCategoryData();
+  const { categories, errorMessage, categoriesLoading } = useCategoryData();
 
   if (categoriesLoading) return <span>loading...</span>;
+  if (errorMessage) return <span>{errorMessage}</span>;
 
   console.log(categories);
 
