@@ -4,9 +4,9 @@ const useProductData = () => {
   const [url, setUrl] = useState(
     "https://dummyjson.com/products/category/fragrances",
   );
-  const [productData, setProductData] = useState([]);
+  const [productData, setProductData] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
-  const [loading, setLoading] = useState(true);
+  const [productLoading, setProductLoading] = useState(true);
 
   useEffect(() => {
     const controller = new AbortController();
@@ -29,7 +29,7 @@ const useProductData = () => {
         setErrorMessage(error.message);
       } finally {
         if (!controller.signal.aborted) {
-          setLoading(false);
+          setProductLoading(false);
         }
       }
     };
@@ -41,7 +41,7 @@ const useProductData = () => {
     };
   }, [url]);
 
-  return { setUrl, productData, errorMessage, loading };
+  return { setUrl, productData, errorMessage, productLoading };
 };
 
 export default useProductData;

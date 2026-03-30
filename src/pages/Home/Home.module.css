@@ -12,10 +12,9 @@
   flex-direction: column;
   color: rgb(0, 0, 0);
   align-self: flex-start;
-  position: relative;
+  margin-top: 20vh;
+  margin-left: 20vw;
   padding: 10px;
-  top: 20%;
-  left: 20vw;
   width: 100%;
   min-width: 100px;
   max-width: 400px;
@@ -33,6 +32,7 @@
   background-color: black;
   font-size: large;
   width: 40%;
+  min-width: 105px;
   height: 50px;
 }
 

@@ -4,7 +4,7 @@ import "./App.css";
 import MainNavigation from "./components/MainNavigation/MainNavigation";
 
 function App() {
-  const [cart, setCart] = useState(["11"]);
+  const [cart, setCart] = useState([]);
 
   return (
     <main>

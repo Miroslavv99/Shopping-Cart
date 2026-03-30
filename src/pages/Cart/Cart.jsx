@@ -5,17 +5,13 @@ import styles from "./Cart.module.css";
 function Cart() {
   const [cart, setCart] = useOutletContext();
 
-  console.log(cart);
-
   return (
     <div className={styles.cart}>
-      {cart.map((el) => {
+      {cart.map((product) => {
         return (
           <ProductCard
-            key={el.id}
-            image={el.image}
-            title={el.title}
-            price={el.price}
+            key={product.id}
+            product={product}
             cart={cart}
             setCart={setCart}
           />

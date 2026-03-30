@@ -1,8 +1,8 @@
 import { useState } from "react";
 import styles from "./ProductCard.module.css";
 
-function ProductCard({ image, title, price, cart, setCart }) {
-  const [quantity, setQuantity] = useState(0);
+function ProductCard({ product, cart, setCart }) {
+  const [quantity, setQuantity] = useState(1);
   const [inputValue, setInputValue] = useState(0);
 
   function handleInput(e) {
@@ -10,17 +10,19 @@ function ProductCard({ image, title, price, cart, setCart }) {
     setQuantity(inputValue);
   }
 
-  function addToCart(item) {
-    setCart([...cart, item]);
+  function addToCart(product) {
+    product.quantity = quantity;
+    setCart([...cart, product]);
+    console.log(product);
   }
 
   return (
     <div className={styles.card}>
-      <img src={image} alt="img" />
-      <h4>{title}</h4>
-      <span>{price}</span>
+      <img src={product.images[0]} alt="img" />
+      <h4>{product.title}</h4>
+      <span>{product.price}</span>
       <input type="number" onChange={handleInput} />
-      <button onClick={() => addToCart({ title, image, price })}>ADD +</button>
+      <button onClick={() => addToCart(product)}>ADD +</button>
     </div>
   );
 }

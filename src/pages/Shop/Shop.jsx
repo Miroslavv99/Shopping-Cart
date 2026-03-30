@@ -1,43 +1,34 @@
 import styles from "./Shop.module.css";
 import useProductData from "../../hooks/useProductData";
-import useCategoryData from "../../hooks/useCategoryData";
+import CategoriesList from "../../components/CategoriesList/CategoriesList";
 import ProductCard from "../../components/ProductCard/ProductCard";
 import { useOutletContext } from "react-router";
 
 function Shop() {
-  const { setUrl, productData, errorMessage, loading } = useProductData();
-  const categories = useCategoryData();
   const [cart, setCart] = useOutletContext();
+  const { setUrl, productData, errorMessage, productLoading } =
+    useProductData();
 
-  if (loading) return <span className={styles.loading}>loading...</span>;
+  if (productLoading) return <span className={styles.loading}>loading...</span>;
 
-  console.log(categories);
   console.log(productData);
 
   return (
-    <div className={styles.shop}>
-      <div>
-        {categories.map((category) => {
+    <>
+      <CategoriesList setUrl={setUrl} />
+      <div className={styles.shop}>
+        {productData.products.map((el) => {
           return (
-            <button onClick={() => setUrl(category.url)} key={category.slug}>
-              {category.name}
-            </button>
+            <ProductCard
+              key={el.id}
+              product={el}
+              cart={cart}
+              setCart={setCart}
+            />
           );
         })}
       </div>
-      {productData.products.map((el) => {
-        return (
-          <ProductCard
-            key={el.id}
-            image={el.images[0]}
-            title={el.title}
-            price={el.price}
-            cart={cart}
-            setCart={setCart}
-          />
-        );
-      })}
-    </div>
+    </>
   );
 }
 
