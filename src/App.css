@@ -7,19 +7,3 @@
 body {
   background-color: rgb(0, 0, 0);
 }
-
-.link {
-  text-decoration: none;
-  color: rgb(255, 255, 255);
-}
-
-.item {
-  width: 200px;
-  height: 200px;
-  background-color: aqua;
-  color: brown;
-}
-
-.item img {
-  width: 200px;
-}

@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 
 const useCategoryData = () => {
+  const [categoriesUrl, setCategoriesUrl] = useState(
+    "https://dummyjson.com/products/categories",
+  );
   const [categories, setCategories] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [categoriesLoading, setCategoriesLoading] = useState(true);
@@ -10,10 +13,9 @@ const useCategoryData = () => {
 
     const getCategories = async () => {
       try {
-        const response = await fetch(
-          "https://dummyjson.com/products/categories",
-          { signal: controller.signal },
-        );
+        const response = await fetch(categoriesUrl, {
+          signal: controller.signal,
+        });
 
         if (!response.ok) {
           throw new Error("Request Error");
@@ -37,7 +39,7 @@ const useCategoryData = () => {
     return () => {
       controller.abort();
     };
-  }, []);
+  }, [categoriesUrl]);
 
   return { categories, errorMessage, categoriesLoading };
 };

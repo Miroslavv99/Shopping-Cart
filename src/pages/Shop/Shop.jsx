@@ -2,7 +2,7 @@ import { useOutletContext } from "react-router";
 import styles from "./Shop.module.css";
 import useProductData from "../../hooks/useProductData";
 import CategoriesList from "../../components/CategoriesList/CategoriesList";
-import ProductItem from "../../components/ProductItem/ProductItem";
+import ShopItem from "../../components/ShopItem/ShopItem";
 
 function Shop() {
   const [cart, setCart] = useOutletContext();
@@ -18,7 +18,7 @@ function Shop() {
       <div className={styles.shop}>
         {productData.products.map((product) => {
           return (
-            <ProductItem
+            <ShopItem
               key={product.id}
               product={product}
               context={[cart, setCart]}

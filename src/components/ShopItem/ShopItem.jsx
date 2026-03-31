@@ -1,12 +1,11 @@
 import { useState } from "react";
-import styles from "./ProductItem.module.css";
+import styles from "./ShopItem.module.css";
 import { useOutletContext } from "react-router";
 
-function ProductItem({ product }) {
+function ShopItem({ product }) {
   const { images, title, price } = product;
   const [cart, setCart] = useOutletContext();
   const [quantity, setQuantity] = useState(1);
-  const [inputValue, setInputValue] = useState(0);
 
   console.log(title);
 
@@ -16,9 +15,14 @@ function ProductItem({ product }) {
   }
 
   function addToCart(product) {
-    product.quantity = quantity;
-    setCart([...cart, product]);
-    console.log(product);
+    const foundProduct = cart.find((cartItem) => cartItem.id === product.id);
+    if (foundProduct) {
+      foundProduct.quantity += 1;
+      setCart([...cart]);
+    } else {
+      product.quantity = quantity;
+      setCart([...cart, product]);
+    }
   }
 
   return (
@@ -26,10 +30,10 @@ function ProductItem({ product }) {
       <img src={images[0]} alt="img" />
       <h4>{title}</h4>
       <span>{price}</span>
-      <input type="number" onChange={handleInput} />
+
       <button onClick={() => addToCart(product)}>ADD +</button>
     </div>
   );
 }
 
-export default ProductItem;
+export default ShopItem;
