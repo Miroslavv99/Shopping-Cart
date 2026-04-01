@@ -1,13 +1,4 @@
 .shop {
-  display: grid;
-  padding: 10px;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  align-items: center;
-  justify-items: center;
-  grid-template-rows: auto;
-  gap: 20px;
-}
-
-.loading {
-  color: aliceblue;
+  display: flex;
+  flex-direction: column;
 }

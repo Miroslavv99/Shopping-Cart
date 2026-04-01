@@ -1,32 +1,30 @@
 import { useOutletContext } from "react-router";
 import styles from "./Shop.module.css";
-import useProductData from "../../hooks/useProductData";
+import useCategories from "../../hooks/useCategories";
+import useProducts from "../../hooks/useProducts";
 import CategoriesList from "../../components/CategoriesList/CategoriesList";
-import ShopItem from "../../components/ShopItem/ShopItem";
+import ProductsList from "../../components/ProductsList/ProductsList";
 
 function Shop() {
-  const [cart, setCart] = useOutletContext();
-  const { setUrl, productData, errorMessage, productLoading } =
-    useProductData();
-
-  if (productLoading) return <span className={styles.loading}>loading...</span>;
-  if (errorMessage) return <span>{errorMessage}</span>;
+  const [cart, setCart, addToCart, increaseQuantity] = useOutletContext();
+  const { categories, categoriesError, categoriesLoading } = useCategories();
+  const { setUrl, productData, errorMessage, productLoading } = useProducts();
 
   return (
-    <>
-      <CategoriesList setUrl={setUrl} />
-      <div className={styles.shop}>
-        {productData.products.map((product) => {
-          return (
-            <ShopItem
-              key={product.id}
-              product={product}
-              context={[cart, setCart]}
-            />
-          );
-        })}
-      </div>
-    </>
+    <div className={styles.shop}>
+      <CategoriesList
+        setUrl={setUrl}
+        categories={categories}
+        categoriesError={categoriesError}
+        categoriesLoading={categoriesLoading}
+      />
+      <ProductsList
+        productData={productData}
+        errorMessage={errorMessage}
+        productLoading={productLoading}
+        addToCart={addToCart}
+      />
+    </div>
   );
 }
 

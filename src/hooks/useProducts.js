@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useProductData = () => {
+const useProducts = () => {
   const [url, setUrl] = useState(
     "https://dummyjson.com/products/category/fragrances",
   );
@@ -44,4 +44,4 @@ const useProductData = () => {
   return { setUrl, productData, errorMessage, productLoading };
 };
 
-export default useProductData;
+export default useProducts;

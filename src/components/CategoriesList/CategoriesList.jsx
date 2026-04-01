@@ -1,18 +1,21 @@
-import useCategoryData from "../../hooks/useCategoryData";
-
-function CategoriesList({ setUrl }) {
-  const { categories, errorMessage, categoriesLoading } = useCategoryData();
-
+function CategoriesList({
+  setUrl,
+  categories,
+  categoriesError,
+  categoriesLoading,
+}) {
   if (categoriesLoading) return <span>loading...</span>;
-  if (errorMessage) return <span>{errorMessage}</span>;
+  if (categoriesError) return <span>{errorMessage}</span>;
 
-  console.log(categories);
+  function handle(urls) {
+    setUrl(urls);
+  }
 
   return (
     <div>
       {categories.map((category) => {
         return (
-          <button onClick={() => setUrl(category.url)} key={category.slug}>
+          <button onClick={() => handle(category.url)} key={category.slug}>
             {category.name}
           </button>
         );

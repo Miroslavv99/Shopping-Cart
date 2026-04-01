@@ -1,11 +1,8 @@
 import { useState, useEffect } from "react";
 
-const useCategoryData = () => {
-  const [categoriesUrl, setCategoriesUrl] = useState(
-    "https://dummyjson.com/products/categories",
-  );
+const useCategories = () => {
   const [categories, setCategories] = useState(null);
-  const [errorMessage, setErrorMessage] = useState(null);
+  const [categoriesError, setCategoriesError] = useState(null);
   const [categoriesLoading, setCategoriesLoading] = useState(true);
 
   useEffect(() => {
@@ -13,9 +10,12 @@ const useCategoryData = () => {
 
     const getCategories = async () => {
       try {
-        const response = await fetch(categoriesUrl, {
-          signal: controller.signal,
-        });
+        const response = await fetch(
+          "https://dummyjson.com/products/categories",
+          {
+            signal: controller.signal,
+          },
+        );
 
         if (!response.ok) {
           throw new Error("Request Error");
@@ -26,7 +26,7 @@ const useCategoryData = () => {
         setCategories(parsedResponse);
       } catch (error) {
         if (error.name === "AbortError") return;
-        setErrorMessage(error.message);
+        setCategoriesError(error.message);
       } finally {
         if (!controller.signal.aborted) {
           setCategoriesLoading(false);
@@ -39,9 +39,9 @@ const useCategoryData = () => {
     return () => {
       controller.abort();
     };
-  }, [categoriesUrl]);
+  }, []);
 
-  return { categories, errorMessage, categoriesLoading };
+  return { categories, categoriesError, categoriesLoading };
 };
 
-export default useCategoryData;
+export default useCategories;
