@@ -5,6 +5,22 @@ const useCart = (cart, setCart) => {
     setCart([...cart]);
   }
 
+  function decreaseQuantity(product) {
+    const foundProduct = cart.find((cartItem) => cartItem.id === product.id);
+
+    if (foundProduct.quantity > 1) {
+      foundProduct.quantity -= 1;
+      setCart([...cart]);
+    } else {
+      deleteProduct(product);
+    }
+  }
+
+  function deleteProduct(product) {
+    const filtredCart = cart.filter((cartItem) => cartItem.id !== product.id);
+    setCart(filtredCart);
+  }
+
   function addToCart(product) {
     const foundProduct = cart.find((cartItem) => cartItem.id === product.id);
     if (foundProduct) {
@@ -15,7 +31,7 @@ const useCart = (cart, setCart) => {
     }
   }
 
-  return { addToCart, increaseQuantity };
+  return { addToCart, increaseQuantity, decreaseQuantity, deleteProduct };
 };
 
 export default useCart;

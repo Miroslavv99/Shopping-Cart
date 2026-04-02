@@ -6,12 +6,22 @@ import useCart from "./hooks/useCart";
 
 function App() {
   const [cart, setCart] = useState([]);
-  const { addToCart, increaseQuantity } = useCart(cart, setCart);
+  const { addToCart, increaseQuantity, decreaseQuantity, deleteProduct } =
+    useCart(cart, setCart);
 
   return (
     <main>
       <MainNavigation />
-      <Outlet context={[cart, setCart, addToCart, increaseQuantity]} />
+      <Outlet
+        context={[
+          cart,
+          setCart,
+          addToCart,
+          increaseQuantity,
+          decreaseQuantity,
+          deleteProduct,
+        ]}
+      />
     </main>
   );
 }

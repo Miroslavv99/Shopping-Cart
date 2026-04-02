@@ -3,7 +3,14 @@ import CartItem from "../../components/CartItem/CartItem";
 import styles from "./Cart.module.css";
 
 function Cart() {
-  const [cart, setCart, addToCart, increaseQuantity] = useOutletContext();
+  const [
+    cart,
+    setCart,
+    addToCart,
+    increaseQuantity,
+    decreaseQuantity,
+    deleteProduct,
+  ] = useOutletContext();
   console.log(cart);
 
   return (
@@ -16,6 +23,8 @@ function Cart() {
             cart={cart}
             setCart={setCart}
             increaseQuantity={increaseQuantity}
+            decreaseQuantity={decreaseQuantity}
+            deleteProduct={deleteProduct}
           />
         );
       })}

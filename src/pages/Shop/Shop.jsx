@@ -6,7 +6,14 @@ import CategoriesList from "../../components/CategoriesList/CategoriesList";
 import ProductsList from "../../components/ProductsList/ProductsList";
 
 function Shop() {
-  const [cart, setCart, addToCart, increaseQuantity] = useOutletContext();
+  const [
+    cart,
+    setCart,
+    addToCart,
+    increaseQuantity,
+    decreaseQuantity,
+    deleteProduct,
+  ] = useOutletContext();
   const { categories, categoriesError, categoriesLoading } = useCategories();
   const { setUrl, productData, errorMessage, productLoading } = useProducts();
 
