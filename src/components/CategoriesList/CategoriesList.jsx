@@ -11,6 +11,7 @@ function CategoriesList({
     setUrl(urls);
   }
 
+  console.log(categories);
   return (
     <div>
       {categories.map((category) => {
