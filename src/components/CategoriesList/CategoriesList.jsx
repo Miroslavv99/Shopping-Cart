@@ -1,8 +1,11 @@
+import styles from "./CategoriesList.module.css";
+
 function CategoriesList({
   setUrl,
   categories,
   categoriesError,
   categoriesLoading,
+  isOpen,
 }) {
   if (categoriesLoading) return <span>loading...</span>;
   if (categoriesError) return <span>{errorMessage}</span>;
@@ -13,7 +16,11 @@ function CategoriesList({
 
   console.log(categories);
   return (
-    <div>
+    <div
+      className={
+        isOpen ? `${styles.categories} ${styles.open}` : styles.categories
+      }
+    >
       {categories.map((category) => {
         return (
           <button onClick={() => handle(category.url)} key={category.slug}>
