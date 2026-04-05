@@ -6,12 +6,14 @@ function CategoriesList({
   categoriesError,
   categoriesLoading,
   isOpen,
+  setIsOpen,
 }) {
   if (categoriesLoading) return <span>loading...</span>;
   if (categoriesError) return <span>{errorMessage}</span>;
 
-  function handle(urls) {
-    setUrl(urls);
+  function handleCategory(url) {
+    setUrl(url);
+    setIsOpen(!isOpen);
   }
 
   console.log(categories);
@@ -23,7 +25,11 @@ function CategoriesList({
     >
       {categories.map((category) => {
         return (
-          <button onClick={() => handle(category.url)} key={category.slug}>
+          <button
+            className={styles.category}
+            onClick={() => handleCategory(category.url)}
+            key={category.slug}
+          >
             {category.name}
           </button>
         );

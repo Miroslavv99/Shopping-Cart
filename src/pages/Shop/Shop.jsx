@@ -21,13 +21,19 @@ function Shop() {
 
   return (
     <div className={styles.shop}>
-      <button onClick={() => setIsOpen(!isOpen)}>Categories</button>
+      <button
+        className={styles.categoriesButton}
+        onClick={() => setIsOpen(!isOpen)}
+      >
+        Categories
+      </button>
       <CategoriesList
         setUrl={setUrl}
         categories={categories}
         categoriesError={categoriesError}
         categoriesLoading={categoriesLoading}
         isOpen={isOpen}
+        setIsOpen={setIsOpen}
       />
       <ProductsList
         productData={productData}

@@ -1,5 +1,20 @@
 .shop {
   display: flex;
   flex-direction: column;
+  justify-content: center;
   position: relative;
+}
+
+.categoriesButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgb(255, 255, 255);
+  width: 14vw;
+  margin-left: 10%;
+  font-size: 2.5vw;
+}
+
+.categoriesButton:hover {
+  color: rgb(194, 194, 194);
 }
