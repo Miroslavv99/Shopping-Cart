@@ -10,9 +10,11 @@
   border: none;
   cursor: pointer;
   color: rgb(255, 255, 255);
-  width: 14vw;
+  width: auto;
+  height: 3vh;
+  max-width: 170px;
   margin-left: 10%;
-  font-size: 2.5vw;
+  font-size: 1.2rem;
 }
 
 .categoriesButton:hover {
