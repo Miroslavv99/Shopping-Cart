@@ -1,7 +1,8 @@
-const useCart = (cart, setCart) => {
+const useCart = (cart, setCart, productsQuantity, setProductsQuantity) => {
   function increaseQuantity(product) {
     const foundProduct = cart.find((cartItem) => cartItem.id === product.id);
     foundProduct.quantity += 1;
+    setProductsQuantity(productsQuantity + 1);
     setCart([...cart]);
   }
 
@@ -10,6 +11,7 @@ const useCart = (cart, setCart) => {
 
     if (foundProduct.quantity > 1) {
       foundProduct.quantity -= 1;
+      setProductsQuantity(productsQuantity - 1);
       setCart([...cart]);
     } else {
       deleteProduct(product);
@@ -18,6 +20,7 @@ const useCart = (cart, setCart) => {
 
   function deleteProduct(product) {
     const filtredCart = cart.filter((cartItem) => cartItem.id !== product.id);
+    setProductsQuantity(productsQuantity - product.quantity);
     setCart(filtredCart);
   }
 
@@ -25,8 +28,10 @@ const useCart = (cart, setCart) => {
     const foundProduct = cart.find((cartItem) => cartItem.id === product.id);
     if (foundProduct) {
       increaseQuantity(product);
+      setProductsQuantity(productsQuantity + 1);
     } else {
       product.quantity = 1;
+      setProductsQuantity(productsQuantity + 1);
       setCart([...cart, product]);
     }
   }

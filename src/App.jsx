@@ -6,11 +6,13 @@ import useCart from "./hooks/useCart";
 
 function App() {
   const [cart, setCart] = useState([]);
+  const [productsQuantity, setProductsQuantity] = useState(0);
   const { addToCart, increaseQuantity, decreaseQuantity, deleteProduct } =
-    useCart(cart, setCart);
+    useCart(cart, setCart, productsQuantity, setProductsQuantity);
 
   return (
     <main>
+      <div>{productsQuantity}</div>
       <MainNavigation />
       <Outlet
         context={[
@@ -20,6 +22,8 @@ function App() {
           increaseQuantity,
           decreaseQuantity,
           deleteProduct,
+          productsQuantity,
+          setProductsQuantity,
         ]}
       />
     </main>

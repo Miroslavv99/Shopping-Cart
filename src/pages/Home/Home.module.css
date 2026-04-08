@@ -34,6 +34,11 @@
   width: 40%;
   min-width: 105px;
   height: 50px;
+  transition: all 0.2s ease;
+}
+
+.shopButton:hover {
+  transform: scale(103%);
 }
 
 .homeLogo {

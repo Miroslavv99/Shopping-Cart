@@ -14,6 +14,8 @@ function Shop() {
     increaseQuantity,
     decreaseQuantity,
     deleteProduct,
+    productsQuantity,
+    setProductsQuantity,
   ] = useOutletContext();
   const { categories, categoriesError, categoriesLoading } = useCategories();
   const { setUrl, productData, errorMessage, productLoading } = useProducts();

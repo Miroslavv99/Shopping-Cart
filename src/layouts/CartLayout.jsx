@@ -8,6 +8,8 @@ function CartLayout() {
     increaseQuantity,
     decreaseQuantity,
     deleteProduct,
+    productsQuantity,
+    setProductsQuantity,
   ] = useOutletContext();
   return (
     <>
@@ -19,6 +21,8 @@ function CartLayout() {
           increaseQuantity,
           decreaseQuantity,
           deleteProduct,
+          productsQuantity,
+          setProductsQuantity,
         ]}
       />
     </>

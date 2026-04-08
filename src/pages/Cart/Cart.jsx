@@ -10,6 +10,8 @@ function Cart() {
     increaseQuantity,
     decreaseQuantity,
     deleteProduct,
+    productsQuantity,
+    setProductsQuantity,
   ] = useOutletContext();
   console.log(cart);
 
