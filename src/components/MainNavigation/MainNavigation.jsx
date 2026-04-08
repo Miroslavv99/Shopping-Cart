@@ -2,7 +2,7 @@ import { useState } from "react";
 import styles from "./MainNavigation.module.css";
 import { Link } from "react-router";
 
-function MainNavigation() {
+function MainNavigation({ productsQuantity }) {
   const [activeLink, setActiveLink] = useState("");
 
   function activateLink(e) {
@@ -37,6 +37,12 @@ function MainNavigation() {
           className={activeLink === "cart" ? styles.active : "link"}
           to="cart"
         >
+          {" "}
+          <div
+            className={productsQuantity === 0 ? styles.hidden : styles.quantity}
+          >
+            {productsQuantity}
+          </div>
           <svg
             width="35px"
             height="35px"

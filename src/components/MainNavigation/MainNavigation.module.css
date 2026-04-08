@@ -28,3 +28,23 @@
   color: rgb(182, 182, 182);
   text-decoration: none;
 }
+
+.quantity {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: absolute;
+  left: 20px;
+  top: 20px;
+  font-size: 12px;
+  font-weight: 900;
+  width: 20px;
+  height: 20px;
+  background-color: rgb(255, 255, 255);
+  color: black;
+  border-radius: 50%;
+}
+
+.hidden {
+  display: none;
+}

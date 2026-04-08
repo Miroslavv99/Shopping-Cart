@@ -12,8 +12,7 @@ function App() {
 
   return (
     <main>
-      <div>{productsQuantity}</div>
-      <MainNavigation />
+      <MainNavigation productsQuantity={productsQuantity} />
       <Outlet
         context={[
           cart,
