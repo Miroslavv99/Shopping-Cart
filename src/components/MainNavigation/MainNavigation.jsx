@@ -37,7 +37,6 @@ function MainNavigation({ productsQuantity }) {
           className={activeLink === "cart" ? styles.active : "link"}
           to="cart"
         >
-          {" "}
           <div
             className={productsQuantity === 0 ? styles.hidden : styles.quantity}
           >

@@ -49,8 +49,6 @@ function ShopItem({ product, addToCart }) {
                 strokeLinecap="round"
                 strokeLinejoin="round"
               />
-
-              {/* аккуратный тонкий плюс */}
               <path
                 d="M12.25 13.2 V17.8"
                 stroke="#000000"
