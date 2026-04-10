@@ -66,19 +66,24 @@ function Cart() {
           </Link>
         </div>
       ) : (
-        cart.map((product) => {
-          return (
-            <CartItem
-              key={product.id}
-              product={product}
-              cart={cart}
-              setCart={setCart}
-              increaseQuantity={increaseQuantity}
-              decreaseQuantity={decreaseQuantity}
-              deleteProduct={deleteProduct}
-            />
-          );
-        })
+        <>
+          <div className={styles.cartItems}>
+            {cart.map((product) => {
+              return (
+                <CartItem
+                  key={product.id}
+                  product={product}
+                  cart={cart}
+                  setCart={setCart}
+                  increaseQuantity={increaseQuantity}
+                  decreaseQuantity={decreaseQuantity}
+                  deleteProduct={deleteProduct}
+                />
+              );
+            })}
+          </div>
+          <div className={styles.orderSummary}></div>
+        </>
       )}
     </div>
   );
