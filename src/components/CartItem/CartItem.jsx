@@ -13,12 +13,14 @@ function CartItem({
   return (
     <div className={styles.item}>
       <img src={images[0]} alt="" />
-      TITLE: {title}
-      PRICE: {price}
-      quant: {quantity}
-      <button onClick={() => increaseQuantity(product)}>+++</button>
-      <input type="number" />
-      <button onClick={() => decreaseQuantity(product)}>---</button>
+      <h3 className={styles.title}>{title}</h3>
+      <p className={styles.price}>{price}</p>
+      <p className={styles.quantity}>{quantity}</p>
+      <div className={styles.quantitySelection}>
+        <button onClick={() => increaseQuantity(product)}>+++</button>
+        <input type="number" value={1} />
+        <button onClick={() => decreaseQuantity(product)}>---</button>
+      </div>
       <button onClick={() => deleteProduct(product)}>DELETE</button>
     </div>
   );
