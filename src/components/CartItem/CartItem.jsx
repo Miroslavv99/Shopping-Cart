@@ -17,11 +17,16 @@ function CartItem({
       <p className={styles.price}>{price}</p>
       <p className={styles.quantity}>{quantity}</p>
       <div className={styles.quantitySelection}>
-        <button onClick={() => increaseQuantity(product)}>+++</button>
+        <button onClick={() => increaseQuantity(product)}>+</button>
         <input type="number" value={1} />
-        <button onClick={() => decreaseQuantity(product)}>---</button>
+        <button onClick={() => decreaseQuantity(product)}>-</button>
       </div>
-      <button onClick={() => deleteProduct(product)}>DELETE</button>
+      <button
+        className={styles.deleteButton}
+        onClick={() => deleteProduct(product)}
+      >
+        X
+      </button>
     </div>
   );
 }
