@@ -1,3 +1,4 @@
+import { useState } from "react";
 import styles from "./CartItem.module.css";
 
 function CartItem({
@@ -9,6 +10,18 @@ function CartItem({
   deleteProduct,
 }) {
   const { images, title, price, quantity } = product;
+  const [inputValue, setInputValue] = useState(1);
+
+  function handleInput(e) {
+    const value = Number(e.target.value);
+    if (value < 1) {
+      setInputValue(1);
+    } else if (value > 20) {
+      setInputValue(20);
+    } else {
+      setInputValue(value);
+    }
+  }
 
   return (
     <div className={styles.item}>
@@ -18,7 +31,13 @@ function CartItem({
       <p className={styles.quantity}>{quantity}</p>
       <div className={styles.quantitySelection}>
         <button onClick={() => increaseQuantity(product)}>+</button>
-        <input type="number" value={1} />
+        <input
+          type="number"
+          value={inputValue}
+          min={1}
+          max={20}
+          onChange={handleInput}
+        />
         <button onClick={() => decreaseQuantity(product)}>-</button>
       </div>
       <button

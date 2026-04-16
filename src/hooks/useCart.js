@@ -1,4 +1,10 @@
 const useCart = (cart, setCart, productsQuantity, setProductsQuantity) => {
+  function changeQuantity(product, value) {
+    const foundProduct = cart.find((cartItem) => cartItem.id === product.id);
+    foundProduct.quantity = value;
+    setCart([...cart]);
+  }
+
   function increaseQuantity(product) {
     const foundProduct = cart.find((cartItem) => cartItem.id === product.id);
     foundProduct.quantity += 1;
