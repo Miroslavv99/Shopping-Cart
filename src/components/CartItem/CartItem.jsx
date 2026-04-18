@@ -1,5 +1,7 @@
 import { useState } from "react";
 import styles from "./CartItem.module.css";
+import { useContext } from "react";
+import { changeContext } from "../../App";
 
 function CartItem({
   product,
@@ -12,23 +14,31 @@ function CartItem({
   const { images, title, price, quantity } = product;
   const [inputValue, setInputValue] = useState(1);
 
+  const { changeQuantity } = useContext(changeContext);
+
   function handleInput(e) {
     const value = Number(e.target.value);
+
     if (value < 1) {
       setInputValue(1);
+      changeQuantity(product, 1);
     } else if (value > 20) {
       setInputValue(20);
+      changeQuantity(product, value);
     } else {
       setInputValue(value);
+      changeQuantity(product, value);
     }
   }
+
+  console.log("count" + quantity);
 
   return (
     <div className={styles.item}>
       <img src={images[0]} alt="" />
       <h3 className={styles.title}>{title}</h3>
       <p className={styles.price}>{price}</p>
-      <p className={styles.quantity}>{quantity}</p>
+      <p className={styles.quantity}>{product.quantity}</p>
       <div className={styles.quantitySelection}>
         <button onClick={() => increaseQuantity(product)}>+</button>
         <input

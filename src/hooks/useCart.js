@@ -42,7 +42,13 @@ const useCart = (cart, setCart, productsQuantity, setProductsQuantity) => {
     }
   }
 
-  return { addToCart, increaseQuantity, decreaseQuantity, deleteProduct };
+  return {
+    addToCart,
+    increaseQuantity,
+    decreaseQuantity,
+    deleteProduct,
+    changeQuantity,
+  };
 };
 
 export default useCart;
