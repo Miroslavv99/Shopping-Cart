@@ -1,4 +1,4 @@
-const useCart = (cart, setCart, productsQuantity) => {
+const useCart = (cart, setCart) => {
   function changeQuantity(product, value) {
     setCart((prev) =>
       prev.map((item) =>

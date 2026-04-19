@@ -12,6 +12,7 @@ function Cart() {
     decreaseQuantity,
     deleteProduct,
     productsQuantity,
+    productsPrice,
   } = useContext(cartContext);
   console.log(cart);
 
@@ -82,7 +83,9 @@ function Cart() {
               );
             })}
           </div>
-          <div className={styles.orderSummary}></div>
+          <div className={styles.orderSummary}>
+            FOR PAYMENT: {productsPrice.toFixed(1)}
+          </div>
         </>
       )}
     </div>
