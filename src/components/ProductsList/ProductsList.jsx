@@ -7,8 +7,6 @@ function ProductsList({
   errorMessage,
   addToCart,
 }) {
-  console.log(productData);
-
   if (productLoading) return <span>loading...</span>;
   if (errorMessage) return <span>{errorMessage}</span>;
 

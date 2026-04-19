@@ -1,24 +1,33 @@
-const useCart = (cart, setCart, productsQuantity, setProductsQuantity) => {
+const useCart = (cart, setCart, productsQuantity) => {
   function changeQuantity(product, value) {
-    const foundProduct = cart.find((cartItem) => cartItem.id === product.id);
-    foundProduct.quantity = value;
-    setCart([...cart]);
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === product.id ? { ...item, quantity: value } : item,
+      ),
+    );
   }
 
   function increaseQuantity(product) {
-    const foundProduct = cart.find((cartItem) => cartItem.id === product.id);
-    foundProduct.quantity += 1;
-    setProductsQuantity(productsQuantity + 1);
-    setCart([...cart]);
+    if (product.quantity >= 20) return;
+
+    setCart((prev) =>
+      prev.map((item) =>
+        item.id === product.id
+          ? { ...item, quantity: item.quantity + 1 }
+          : item,
+      ),
+    );
   }
 
   function decreaseQuantity(product) {
-    const foundProduct = cart.find((cartItem) => cartItem.id === product.id);
-
-    if (foundProduct.quantity > 1) {
-      foundProduct.quantity -= 1;
-      setProductsQuantity(productsQuantity - 1);
-      setCart([...cart]);
+    if (product.quantity > 1) {
+      setCart((prev) =>
+        prev.map((item) =>
+          item.id === product.id
+            ? { ...item, quantity: item.quantity - 1 }
+            : item,
+        ),
+      );
     } else {
       deleteProduct(product);
     }
@@ -26,18 +35,15 @@ const useCart = (cart, setCart, productsQuantity, setProductsQuantity) => {
 
   function deleteProduct(product) {
     const filtredCart = cart.filter((cartItem) => cartItem.id !== product.id);
-    setProductsQuantity(productsQuantity - product.quantity);
+
     setCart(filtredCart);
   }
 
   function addToCart(product) {
-    const foundProduct = cart.find((cartItem) => cartItem.id === product.id);
-    if (foundProduct) {
+    if (product.quantity > 0) {
       increaseQuantity(product);
-      setProductsQuantity(productsQuantity + 1);
     } else {
       product.quantity = 1;
-      setProductsQuantity(productsQuantity + 1);
       setCart([...cart, product]);
     }
   }

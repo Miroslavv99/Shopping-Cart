@@ -1,22 +1,13 @@
-import { useOutletContext } from "react-router";
+import { useContext, useState } from "react";
+import { cartContext } from "../../App";
 import styles from "./Shop.module.css";
 import useCategories from "../../hooks/useCategories";
 import useProducts from "../../hooks/useProducts";
 import CategoriesList from "../../components/CategoriesList/CategoriesList";
 import ProductsList from "../../components/ProductsList/ProductsList";
-import { useState } from "react";
 
 function Shop() {
-  const [
-    cart,
-    setCart,
-    addToCart,
-    increaseQuantity,
-    decreaseQuantity,
-    deleteProduct,
-    productsQuantity,
-    setProductsQuantity,
-  ] = useOutletContext();
+  const { addToCart } = useContext(cartContext);
   const { categories, categoriesError, categoriesLoading } = useCategories();
   const { setUrl, productData, errorMessage, productLoading } = useProducts();
   const [isOpen, setIsOpen] = useState(false);

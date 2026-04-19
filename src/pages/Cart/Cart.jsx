@@ -1,18 +1,18 @@
-import { useOutletContext, Link } from "react-router";
+import { Link } from "react-router";
+import { useContext } from "react";
+import { cartContext } from "../../App";
 import CartItem from "../../components/CartItem/CartItem";
 import styles from "./Cart.module.css";
 
 function Cart() {
-  const [
+  const {
     cart,
     setCart,
-    addToCart,
     increaseQuantity,
     decreaseQuantity,
     deleteProduct,
     productsQuantity,
-    setProductsQuantity,
-  ] = useOutletContext();
+  } = useContext(cartContext);
   console.log(cart);
 
   return (

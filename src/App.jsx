@@ -5,37 +5,37 @@ import MainNavigation from "./components/MainNavigation/MainNavigation";
 import useCart from "./hooks/useCart";
 import { createContext } from "react";
 
-export const changeContext = createContext(null);
+export const cartContext = createContext(null);
 
 function App() {
   const [cart, setCart] = useState([]);
-  const [productsQuantity, setProductsQuantity] = useState(0);
+  const productsQuantity = cart.reduce((acc, curr) => acc + curr.quantity, 0);
   const {
     addToCart,
     increaseQuantity,
     decreaseQuantity,
     deleteProduct,
     changeQuantity,
-  } = useCart(cart, setCart, productsQuantity, setProductsQuantity);
+  } = useCart(cart, setCart, productsQuantity);
 
   return (
-    <changeContext.Provider value={{ changeQuantity }}>
+    <cartContext.Provider
+      value={{
+        cart,
+        setCart,
+        addToCart,
+        increaseQuantity,
+        decreaseQuantity,
+        changeQuantity,
+        deleteProduct,
+        productsQuantity,
+      }}
+    >
       <main>
         <MainNavigation productsQuantity={productsQuantity} />
-        <Outlet
-          context={[
-            cart,
-            setCart,
-            addToCart,
-            increaseQuantity,
-            decreaseQuantity,
-            deleteProduct,
-            productsQuantity,
-            setProductsQuantity,
-          ]}
-        />
+        <Outlet />
       </main>
-    </changeContext.Provider>
+    </cartContext.Provider>
   );
 }
 
