@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import styles from "./MainNavigation.module.css";
 import { Link } from "react-router";
+import { cartContext } from "../../App";
 
 function MainNavigation({ productsQuantity }) {
-  const [activeLink, setActiveLink] = useState("");
+  const { activeLink, setActiveLink } = useContext(cartContext);
 
   function activateLink(e) {
     setActiveLink(e.target.id);
@@ -11,9 +12,10 @@ function MainNavigation({ productsQuantity }) {
 
   return (
     <header className={styles.navigation}>
-      <Link className="link" to="/">
+      <Link onClick={() => setActiveLink("home")} className="link" to="/">
         <h1>MONERI</h1>
       </Link>
+      ``
       <div className={styles.links}>
         <Link
           onClick={activateLink}

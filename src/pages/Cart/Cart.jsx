@@ -13,12 +13,12 @@ function Cart() {
     deleteProduct,
     productsQuantity,
     productsPrice,
+    setActiveLink,
   } = useContext(cartContext);
-  console.log(cart);
 
   return (
     <div className={styles.cart}>
-      {productsQuantity === 0 ? (
+      {productsQuantity < 1 ? (
         <div className={styles.emptyCart}>
           <div>
             <svg
@@ -62,7 +62,11 @@ function Cart() {
             <h1>Your cart is empty</h1>
           </div>
           <p>Add more items to your cart. We're sure you'll like something.</p>
-          <Link className={styles.shopLink} to="/shop">
+          <Link
+            onClick={() => setActiveLink("shop")}
+            className={styles.shopLink}
+            to="/shop"
+          >
             Shop Now!
           </Link>
         </div>
@@ -84,7 +88,7 @@ function Cart() {
             })}
           </div>
           <div className={styles.orderSummary}>
-            FOR PAYMENT: {productsPrice.toFixed(1)}
+            FOR PAYMENT: {productsPrice.toFixed(2)}
           </div>
         </>
       )}

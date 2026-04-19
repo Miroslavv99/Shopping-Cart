@@ -9,6 +9,7 @@ export const cartContext = createContext(null);
 
 function App() {
   const [cart, setCart] = useState([]);
+  const [activeLink, setActiveLink] = useState("home");
   const productsQuantity = cart.reduce((acc, curr) => acc + curr.quantity, 0);
   const productsPrice = cart.reduce(
     (acc, curr) => acc + curr.price * curr.quantity,
@@ -35,6 +36,9 @@ function App() {
         changeQuantity,
         deleteProduct,
         productsPrice,
+        productsQuantity,
+        activeLink,
+        setActiveLink,
       }}
     >
       <main>

@@ -1,7 +1,10 @@
+import { useContext } from "react";
 import styles from "./Home.module.css";
 import { Link } from "react-router";
+import { cartContext } from "../../App";
 
 function Home() {
+  const { setActiveLink } = useContext(cartContext);
   return (
     <div className={styles.home}>
       <h2>
@@ -15,7 +18,11 @@ function Home() {
           Monery is your destination for designer and comfortable clothes for
           any occasion.
         </span>
-        <Link className={styles.shopButton} to="shop">
+        <Link
+          onClick={() => setActiveLink("shop")}
+          className={styles.shopButton}
+          to="shop"
+        >
           Shop Now +
         </Link>
       </div>
