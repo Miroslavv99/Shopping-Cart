@@ -86,6 +86,7 @@ function Cart() {
                 />
               );
             })}
+            <button>DELETE CART</button>
           </div>
           <div className={styles.orderSummary}>
             FOR PAYMENT: {productsPrice.toFixed(2)}

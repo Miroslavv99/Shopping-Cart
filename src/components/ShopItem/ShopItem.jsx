@@ -1,14 +1,7 @@
-import { useState } from "react";
 import styles from "./ShopItem.module.css";
 
 function ShopItem({ product, addToCart }) {
   const { images, title, price } = product;
-  const [quantity, setQuantity] = useState(1);
-
-  function handleInput(e) {
-    setInputValue(e.target.value);
-    setQuantity(inputValue);
-  }
 
   return (
     <div className={styles.card}>

@@ -1,12 +1,15 @@
 import { useState } from "react";
 import { Outlet } from "react-router";
+import { useEffect } from "react";
 import "./App.css";
 import MainNavigation from "./components/MainNavigation/MainNavigation";
 import useCart from "./hooks/useCart";
 import shopContext from "./context/shopContext";
+import useLocalStorage from "./hooks/useLocalStorage";
 
 function App() {
-  const [cart, setCart] = useState([]);
+  const { cart, setCart } = useLocalStorage();
+
   const [activeLink, setActiveLink] = useState("home");
   const {
     addToCart,
