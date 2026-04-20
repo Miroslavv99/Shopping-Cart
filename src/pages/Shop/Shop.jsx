@@ -1,5 +1,5 @@
 import { useContext, useState } from "react";
-import { cartContext } from "../../App";
+import shopContext from "../../context/shopContext";
 import styles from "./Shop.module.css";
 import useCategories from "../../hooks/useCategories";
 import useProducts from "../../hooks/useProducts";
@@ -7,7 +7,7 @@ import CategoriesList from "../../components/CategoriesList/CategoriesList";
 import ProductsList from "../../components/ProductsList/ProductsList";
 
 function Shop() {
-  const { addToCart } = useContext(cartContext);
+  const { addToCart } = useContext(shopContext);
   const { categories, categoriesError, categoriesLoading } = useCategories();
   const { setUrl, productData, errorMessage, productLoading } = useProducts();
   const [isOpen, setIsOpen] = useState(false);

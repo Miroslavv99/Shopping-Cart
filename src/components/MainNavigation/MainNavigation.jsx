@@ -1,10 +1,10 @@
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import styles from "./MainNavigation.module.css";
 import { Link } from "react-router";
-import { cartContext } from "../../App";
+import shopContext from "../../context/shopContext";
 
 function MainNavigation({ productsQuantity }) {
-  const { activeLink, setActiveLink } = useContext(cartContext);
+  const { activeLink, setActiveLink } = useContext(shopContext);
 
   function activateLink(e) {
     setActiveLink(e.target.id);
@@ -15,7 +15,6 @@ function MainNavigation({ productsQuantity }) {
       <Link onClick={() => setActiveLink("home")} className="link" to="/">
         <h1>MONERI</h1>
       </Link>
-      ``
       <div className={styles.links}>
         <Link
           onClick={activateLink}

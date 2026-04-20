@@ -1,20 +1,13 @@
 import { useState } from "react";
 import { Outlet } from "react-router";
-import { createContext } from "react";
 import "./App.css";
 import MainNavigation from "./components/MainNavigation/MainNavigation";
 import useCart from "./hooks/useCart";
-
-export const cartContext = createContext(null);
+import shopContext from "./context/shopContext";
 
 function App() {
   const [cart, setCart] = useState([]);
   const [activeLink, setActiveLink] = useState("home");
-  const productsQuantity = cart.reduce((acc, curr) => acc + curr.quantity, 0);
-  const productsPrice = cart.reduce(
-    (acc, curr) => acc + curr.price * curr.quantity,
-    0,
-  );
   const {
     addToCart,
     increaseQuantity,
@@ -23,10 +16,14 @@ function App() {
     changeQuantity,
   } = useCart(cart, setCart);
 
-  console.log(cart);
+  const productsQuantity = cart.reduce((acc, curr) => acc + curr.quantity, 0);
+  const productsPrice = cart.reduce(
+    (acc, curr) => acc + curr.price * curr.quantity,
+    0,
+  );
 
   return (
-    <cartContext.Provider
+    <shopContext.Provider
       value={{
         cart,
         setCart,
@@ -45,7 +42,7 @@ function App() {
         <MainNavigation productsQuantity={productsQuantity} />
         <Outlet />
       </main>
-    </cartContext.Provider>
+    </shopContext.Provider>
   );
 }
 

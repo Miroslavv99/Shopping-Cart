@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 
 const useProducts = () => {
   const [url, setUrl] = useState(
-    "https://dummyjson.com/products/category/fragrances",
+    "https://dummyjson.com/products/category/mens-watches",
   );
   const [productData, setProductData] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
