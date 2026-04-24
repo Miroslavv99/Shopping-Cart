@@ -10,6 +10,7 @@ function CartItem({
 }) {
   const { images, title, price, quantity } = product;
   const { changeQuantity } = useContext(shopContext);
+  const totalCost = price * quantity;
 
   function handleQuantityInput(e) {
     const value = Number(e.target.value);
@@ -22,13 +23,20 @@ function CartItem({
     }
   }
 
+  console.log(product);
+
   return (
     <div className={styles.item}>
-      <img src={images[0]} alt="Product Image" />
+      <img src={images[0]} alt={title} />
       <h3 className={styles.title}>{title}</h3>
-      <p className={styles.price}>{price}</p>
-      <p className={styles.quantity}>{quantity}</p>
+      <p className={styles.price}>
+        Price: <b>{price} $</b>
+      </p>
+      <p className={styles.totalCost}>
+        Total Cost: <b>{totalCost.toFixed(2)} $</b>
+      </p>
       <div className={styles.quantitySelection}>
+        <p>Quantity: </p>
         <button onClick={() => increaseQuantity(product)}>+</button>
         <input
           type="number"

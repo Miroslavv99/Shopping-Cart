@@ -4,7 +4,9 @@ function Footer() {
   return (
     <footer className={styles.footer}>
       <p>Moneri © 2026</p>
-      <p>Style starts here.</p>
+      <p>
+        your destination for designer and comfortable clothes for any occasion
+      </p>
     </footer>
   );
 }

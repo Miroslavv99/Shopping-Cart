@@ -3,6 +3,7 @@
   padding: 2%;
   width: 100%;
   gap: 5%;
+  min-height: 80vh;
 }
 
 .emptyCart {
@@ -31,7 +32,9 @@
 
 .cartItems {
   background-color: rgb(226, 226, 226);
+  padding: 20px;
   width: 70vw;
+  max-height: fit-content;
 }
 
 .orderSummary {
