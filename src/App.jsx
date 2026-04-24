@@ -1,23 +1,30 @@
 import { useState } from "react";
 import { Outlet } from "react-router";
-import { useEffect } from "react";
 import "./App.css";
 import MainNavigation from "./components/MainNavigation/MainNavigation";
 import useCart from "./hooks/useCart";
-import shopContext from "./context/shopContext";
 import useLocalStorage from "./hooks/useLocalStorage";
+import shopContext from "./context/shopContext";
+import { useReducer } from "react";
+import cartReducer from "./reducers/cartReducer";
 
 function App() {
-  const { cart, setCart } = useLocalStorage();
+  const savedCart = JSON.parse(localStorage.getItem("cart"));
+
+  const [cart, dispatch] = useReducer(cartReducer, savedCart ? savedCart : []);
+
+  useLocalStorage(cart);
 
   const [activeLink, setActiveLink] = useState("home");
+
   const {
     addToCart,
     increaseQuantity,
     decreaseQuantity,
     deleteProduct,
     changeQuantity,
-  } = useCart(cart, setCart);
+    clearCart,
+  } = useCart(cart, dispatch);
 
   const productsQuantity = cart.reduce((acc, curr) => acc + curr.quantity, 0);
   const productsPrice = cart.reduce(
@@ -29,12 +36,12 @@ function App() {
     <shopContext.Provider
       value={{
         cart,
-        setCart,
         addToCart,
         increaseQuantity,
         decreaseQuantity,
         changeQuantity,
         deleteProduct,
+        clearCart,
         productsPrice,
         productsQuantity,
         activeLink,

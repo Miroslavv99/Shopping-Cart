@@ -9,7 +9,7 @@ function CategoriesList({
   setIsOpen,
 }) {
   if (categoriesLoading) return <span>loading...</span>;
-  if (categoriesError) return <span>{errorMessage}</span>;
+  if (categoriesError) return <span>{categoriesError}</span>;
 
   function handleCategory(url) {
     setUrl(url);

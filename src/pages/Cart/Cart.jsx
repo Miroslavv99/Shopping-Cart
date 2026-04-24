@@ -13,6 +13,7 @@ function Cart() {
     deleteProduct,
     productsQuantity,
     productsPrice,
+    clearCart,
     setActiveLink,
   } = useContext(shopContext);
 
@@ -86,7 +87,7 @@ function Cart() {
                 />
               );
             })}
-            <button>DELETE CART</button>
+            <button onClick={clearCart}>DELETE CART</button>
           </div>
           <div className={styles.orderSummary}>
             FOR PAYMENT: {productsPrice.toFixed(2)}
