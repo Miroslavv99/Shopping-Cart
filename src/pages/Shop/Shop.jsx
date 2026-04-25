@@ -1,13 +1,14 @@
 import { useContext, useState } from "react";
-import shopContext from "../../context/shopContext";
+import CartContext from "../../contexts/CartContext";
 import styles from "./Shop.module.css";
 import useCategories from "../../hooks/useCategories";
 import useProducts from "../../hooks/useProducts";
 import CategoriesList from "../../components/CategoriesList/CategoriesList";
 import ProductsList from "../../components/ProductsList/ProductsList";
+import { createContext } from "react";
 
 function Shop() {
-  const { addToCart } = useContext(shopContext);
+  const { addToCart } = useContext(CartContext);
 
   const {
     categoriesUrl,

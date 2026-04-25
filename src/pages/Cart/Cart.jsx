@@ -1,6 +1,6 @@
 import { Link } from "react-router";
 import { useContext } from "react";
-import shopContext from "../../context/shopContext";
+import CartContext from "../../contexts/CartContext";
 import CartItem from "../../components/CartItem/CartItem";
 import styles from "./Cart.module.css";
 
@@ -15,7 +15,7 @@ function Cart() {
     productsPrice,
     clearCart,
     setActiveLink,
-  } = useContext(shopContext);
+  } = useContext(CartContext);
 
   return (
     <div className={styles.cart}>

@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import styles from "./MainNavigation.module.css";
 import { Link } from "react-router";
-import shopContext from "../../context/shopContext";
+import shopContext from "../../contexts/CartContext";
 
 function MainNavigation({ productsQuantity }) {
   const { activeLink, setActiveLink } = useContext(shopContext);

@@ -4,7 +4,7 @@ import "./App.css";
 import MainNavigation from "./components/MainNavigation/MainNavigation";
 import useCart from "./hooks/useCart";
 import useLocalStorage from "./hooks/useLocalStorage";
-import shopContext from "./context/shopContext";
+import CartContext from "./contexts/CartContext";
 import { useReducer } from "react";
 import cartReducer from "./reducers/cartReducer";
 
@@ -33,7 +33,7 @@ function App() {
   );
 
   return (
-    <shopContext.Provider
+    <CartContext.Provider
       value={{
         cart,
         addToCart,
@@ -52,7 +52,7 @@ function App() {
         <MainNavigation productsQuantity={productsQuantity} />
         <Outlet />
       </main>
-    </shopContext.Provider>
+    </CartContext.Provider>
   );
 }
 

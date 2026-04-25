@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import shopContext from "../../context/shopContext";
+import CartContext from "../../contexts/CartContext";
 import styles from "./CartItem.module.css";
 
 function CartItem({
@@ -9,7 +9,7 @@ function CartItem({
   deleteProduct,
 }) {
   const { images, title, price, quantity } = product;
-  const { changeQuantity } = useContext(shopContext);
+  const { changeQuantity } = useContext(CartContext);
   const totalCost = price * quantity;
 
   function handleQuantityInput(e) {
