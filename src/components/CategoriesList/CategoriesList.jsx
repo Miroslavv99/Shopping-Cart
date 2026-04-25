@@ -1,9 +1,12 @@
 import styles from "./CategoriesList.module.css";
 
 function CategoriesList({
+  categoriesUrl,
   setUrl,
+  setCategoriesReloadUrl,
   categories,
   categoriesError,
+  setCategoriesError,
   categoriesLoading,
   isOpen,
   setIsOpen,

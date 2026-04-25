@@ -8,8 +8,26 @@ import ProductsList from "../../components/ProductsList/ProductsList";
 
 function Shop() {
   const { addToCart } = useContext(shopContext);
-  const { categories, categoriesError, categoriesLoading } = useCategories();
-  const { setUrl, productData, errorMessage, productLoading } = useProducts();
+
+  const {
+    categoriesUrl,
+    setCategoriesReloadUrl,
+    categories,
+    categoriesError,
+    setCategoriesError,
+    categoriesLoading,
+  } = useCategories();
+
+  const {
+    url,
+    setUrl,
+    setReloadUrl,
+    productData,
+    errorMessage,
+    setErrorMessage,
+    productLoading,
+  } = useProducts();
+
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -31,6 +49,7 @@ function Shop() {
         </svg>
       </button>
       <CategoriesList
+        categoriesUrl={categoriesUrl}
         setUrl={setUrl}
         categories={categories}
         categoriesError={categoriesError}
@@ -39,8 +58,11 @@ function Shop() {
         setIsOpen={setIsOpen}
       />
       <ProductsList
+        setReloadUrl={setReloadUrl}
+        url={url}
         productData={productData}
         errorMessage={errorMessage}
+        setErrorMessage={setErrorMessage}
         productLoading={productLoading}
         addToCart={addToCart}
       />

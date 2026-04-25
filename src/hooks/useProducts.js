@@ -4,6 +4,7 @@ const useProducts = () => {
   const [url, setUrl] = useState(
     "https://dummyjson.com/products/category/mens-watches",
   );
+  const [reloadUrl, setReloadUrl] = useState("");
   const [productData, setProductData] = useState(null);
   const [errorMessage, setErrorMessage] = useState(null);
   const [productLoading, setProductLoading] = useState(true);
@@ -39,9 +40,17 @@ const useProducts = () => {
     return () => {
       controller.abort();
     };
-  }, [url]);
+  }, [url, reloadUrl]);
 
-  return { setUrl, productData, errorMessage, productLoading };
+  return {
+    url,
+    setUrl,
+    setReloadUrl,
+    productData,
+    errorMessage,
+    setErrorMessage,
+    productLoading,
+  };
 };
 
 export default useProducts;

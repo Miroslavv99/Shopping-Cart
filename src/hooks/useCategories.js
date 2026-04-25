@@ -1,7 +1,9 @@
 import { useState, useEffect } from "react";
 
 const useCategories = () => {
+  const categoriesUrl = "https://dummyjson.com/products/categories";
   const [categories, setCategories] = useState(null);
+  const [categoriesReloadUrl, setCategoriesReloadUrl] = useState("");
   const [categoriesError, setCategoriesError] = useState(null);
   const [categoriesLoading, setCategoriesLoading] = useState(true);
 
@@ -10,12 +12,9 @@ const useCategories = () => {
 
     const getCategories = async () => {
       try {
-        const response = await fetch(
-          "https://dummyjson.com/products/categories",
-          {
-            signal: controller.signal,
-          },
-        );
+        const response = await fetch(categoriesUrl, {
+          signal: controller.signal,
+        });
 
         if (!response.ok) {
           throw new Error("Request Error");
@@ -39,9 +38,16 @@ const useCategories = () => {
     return () => {
       controller.abort();
     };
-  }, []);
+  }, [categoriesReloadUrl]);
 
-  return { categories, categoriesError, categoriesLoading };
+  return {
+    categoriesUrl,
+    setCategoriesReloadUrl,
+    categories,
+    categoriesError,
+    setCategoriesError,
+    categoriesLoading,
+  };
 };
 
 export default useCategories;
