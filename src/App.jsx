@@ -1,11 +1,12 @@
+import "./App.css";
 import { useState } from "react";
 import { Outlet } from "react-router";
-import "./App.css";
+import { useReducer } from "react";
 import MainNavigation from "./components/MainNavigation/MainNavigation";
 import useCart from "./hooks/useCart";
 import useLocalStorage from "./hooks/useLocalStorage";
 import CartContext from "./contexts/CartContext";
-import { useReducer } from "react";
+import UiContext from "./contexts/UiContext";
 import cartReducer from "./reducers/cartReducer";
 
 function App() {
@@ -33,26 +34,26 @@ function App() {
   );
 
   return (
-    <CartContext.Provider
-      value={{
-        cart,
-        addToCart,
-        increaseQuantity,
-        decreaseQuantity,
-        changeQuantity,
-        deleteProduct,
-        clearCart,
-        productsPrice,
-        productsQuantity,
-        activeLink,
-        setActiveLink,
-      }}
-    >
-      <main>
-        <MainNavigation productsQuantity={productsQuantity} />
-        <Outlet />
-      </main>
-    </CartContext.Provider>
+    <UiContext.Provider value={{ activeLink, setActiveLink }}>
+      <CartContext.Provider
+        value={{
+          cart,
+          addToCart,
+          increaseQuantity,
+          decreaseQuantity,
+          changeQuantity,
+          deleteProduct,
+          clearCart,
+          productsPrice,
+          productsQuantity,
+        }}
+      >
+        <main>
+          <MainNavigation productsQuantity={productsQuantity} />
+          <Outlet />
+        </main>
+      </CartContext.Provider>
+    </UiContext.Provider>
   );
 }
 

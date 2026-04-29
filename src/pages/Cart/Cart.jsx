@@ -1,10 +1,13 @@
 import { Link } from "react-router";
 import { useContext } from "react";
 import CartContext from "../../contexts/CartContext";
+import UiContext from "../../contexts/UiContext";
 import CartItem from "../../components/CartItem/CartItem";
 import styles from "./Cart.module.css";
 
 function Cart() {
+  const { setActiveLink } = useContext(UiContext);
+
   const {
     cart,
     setCart,
@@ -14,7 +17,6 @@ function Cart() {
     productsQuantity,
     productsPrice,
     clearCart,
-    setActiveLink,
   } = useContext(CartContext);
 
   return (

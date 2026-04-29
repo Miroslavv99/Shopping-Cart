@@ -1,10 +1,11 @@
 import { useContext } from "react";
-import styles from "./Home.module.css";
 import { Link } from "react-router";
-import CartContext from "../../contexts/CartContext";
+import styles from "./Home.module.css";
+import UiContext from "../../contexts/UiContext";
 
 function Home() {
-  const { setActiveLink } = useContext(CartContext);
+  const { setActiveLink } = useContext(UiContext);
+
   return (
     <div className={styles.home}>
       <h2>

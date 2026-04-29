@@ -1,10 +1,10 @@
 import { useContext } from "react";
 import styles from "./MainNavigation.module.css";
 import { Link } from "react-router";
-import shopContext from "../../contexts/CartContext";
+import UiContext from "../../contexts/UiContext";
 
 function MainNavigation({ productsQuantity }) {
-  const { activeLink, setActiveLink } = useContext(shopContext);
+  const { activeLink, setActiveLink } = useContext(UiContext);
 
   function activateLink(e) {
     setActiveLink(e.target.id);
