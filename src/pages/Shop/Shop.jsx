@@ -5,69 +5,56 @@ import useCategories from "../../hooks/useCategories";
 import useProducts from "../../hooks/useProducts";
 import CategoriesList from "../../components/CategoriesList/CategoriesList";
 import ProductsList from "../../components/ProductsList/ProductsList";
-import { createContext } from "react";
+import ShopContext from "../../contexts/ShopContext";
 
 function Shop() {
-  const { addToCart } = useContext(CartContext);
+  const { categories, categoriesError, setCategoriesError, categoriesLoading } =
+    useCategories();
 
   const {
-    categoriesUrl,
-    setCategoriesReloadUrl,
-    categories,
-    categoriesError,
-    setCategoriesError,
-    categoriesLoading,
-  } = useCategories();
-
-  const {
-    url,
-    setUrl,
-    setReloadUrl,
+    setProductsUrl,
     productData,
-    errorMessage,
-    setErrorMessage,
+    productsError,
+    setProductsError,
     productLoading,
   } = useProducts();
 
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className={styles.shop}>
-      <button
-        className={styles.categoriesButton}
-        onClick={() => setIsOpen(!isOpen)}
-      >
-        <svg
-          width="44px"
-          height="44px"
-          viewBox="0 0 24 24"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
+    <ShopContext.Provider
+      value={{
+        categories,
+        setProductsUrl,
+        categoriesError,
+        categoriesLoading,
+        productData,
+        productsError,
+        setProductsError,
+        productLoading,
+      }}
+    >
+      <div className={styles.shop}>
+        <button
+          className={styles.categoriesButton}
+          onClick={() => setIsOpen(!isOpen)}
         >
-          <path d="M21 7H3V6H21V7Z" fill="#080341" />
-          <path d="M21 12.5H3V11.5H21V12.5Z" fill="#080341" />
-          <path d="M21 18H3V17H21V18Z" fill="#080341" />
-        </svg>
-      </button>
-      <CategoriesList
-        categoriesUrl={categoriesUrl}
-        setUrl={setUrl}
-        categories={categories}
-        categoriesError={categoriesError}
-        categoriesLoading={categoriesLoading}
-        isOpen={isOpen}
-        setIsOpen={setIsOpen}
-      />
-      <ProductsList
-        setReloadUrl={setReloadUrl}
-        url={url}
-        productData={productData}
-        errorMessage={errorMessage}
-        setErrorMessage={setErrorMessage}
-        productLoading={productLoading}
-        addToCart={addToCart}
-      />
-    </div>
+          <svg
+            width="44px"
+            height="44px"
+            viewBox="0 0 24 24"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path d="M21 7H3V6H21V7Z" fill="#080341" />
+            <path d="M21 12.5H3V11.5H21V12.5Z" fill="#080341" />
+            <path d="M21 18H3V17H21V18Z" fill="#080341" />
+          </svg>
+        </button>
+        <CategoriesList isOpen={isOpen} setIsOpen={setIsOpen} />
+        <ProductsList />
+      </div>
+    </ShopContext.Provider>
   );
 }
 

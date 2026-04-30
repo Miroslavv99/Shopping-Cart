@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
 const useProducts = () => {
-  const [productsUrl, setProductsUrl] = useState(
+  const [url, setUrl] = useState(
     "https://dummyjson.com/products/category/mens-watches",
   );
   const [productData, setProductData] = useState(null);
@@ -10,7 +10,7 @@ const useProducts = () => {
 
   const getProductData = async (controller) => {
     try {
-      const response = await fetch(productsUrl, {
+      const response = await fetch(url, {
         signal: controller.signal,
       });
 
@@ -39,10 +39,10 @@ const useProducts = () => {
     return () => {
       controller.abort();
     };
-  }, [productsUrl]);
+  }, [url]);
 
   return {
-    setProductsUrl,
+    setUrl,
     productData,
     productsError,
     setProductsError,

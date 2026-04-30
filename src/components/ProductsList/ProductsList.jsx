@@ -1,27 +1,20 @@
 import ShopItem from "../../components/ShopItem/ShopItem";
-import ProductsErrorMessage from "../ErrorStates/ProductsErrorState";
 import styles from "./ProductsList.module.css";
+import ShopContext from "../../contexts/ShopContext";
+import CartContext from "../../contexts/CartContext";
+import { useContext } from "react";
 
-function ProductsList({
-  setErrorMessage,
-  setReloadUrl,
-  url,
-  productData,
-  productLoading,
-  errorMessage,
-  addToCart,
-}) {
+function ProductsList() {
+  const { productData, productsError, setProductsError, productLoading } =
+    useContext(ShopContext);
+  const { addToCart } = useContext(CartContext);
+
   if (productLoading) return <span>loading...</span>;
 
   return (
     <>
-      {errorMessage ? (
-        <ProductsErrorMessage
-          setErrorMessage={setErrorMessage}
-          setReloadUrl={setReloadUrl}
-          url={url}
-          errorMessage={errorMessage}
-        />
+      {productsError ? (
+        <h1>ERROR</h1>
       ) : (
         <div className={styles.products}>
           {productData.products.map((product) => {

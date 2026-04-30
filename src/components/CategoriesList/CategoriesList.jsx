@@ -1,21 +1,21 @@
 import styles from "./CategoriesList.module.css";
+import ShopContext from "../../contexts/ShopContext";
+import { useContext } from "react";
 
-function CategoriesList({
-  categoriesUrl,
-  setUrl,
-  setCategoriesReloadUrl,
-  categories,
-  categoriesError,
-  setCategoriesError,
-  categoriesLoading,
-  isOpen,
-  setIsOpen,
-}) {
+function CategoriesList({ isOpen, setIsOpen }) {
+  const {
+    categories,
+    setProductsUrl,
+    categoriesError,
+    setCategoriesError,
+    categoriesLoading,
+  } = useContext(ShopContext);
+
   if (categoriesLoading) return <span>loading...</span>;
   if (categoriesError) return <span>{categoriesError}</span>;
 
   function handleCategory(url) {
-    setUrl(url);
+    setProductsUrl(url);
     setIsOpen(!isOpen);
   }
 

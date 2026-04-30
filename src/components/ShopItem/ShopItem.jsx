@@ -1,7 +1,10 @@
 import styles from "./ShopItem.module.css";
+import CartContext from "../../contexts/CartContext";
+import { useContext } from "react";
 
-function ShopItem({ product, addToCart }) {
+function ShopItem({ product }) {
   const { images, title, price } = product;
+  const { addToCart } = useContext(CartContext);
 
   return (
     <div className={styles.card}>

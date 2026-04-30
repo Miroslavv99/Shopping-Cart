@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 const useCategories = () => {
   const categoriesUrl = "https://dummyjson.com/products/categories";
   const [categories, setCategories] = useState(null);
-  const [categoriesReloadUrl, setCategoriesReloadUrl] = useState("");
   const [categoriesError, setCategoriesError] = useState(null);
   const [categoriesLoading, setCategoriesLoading] = useState(true);
 
@@ -38,11 +37,9 @@ const useCategories = () => {
     return () => {
       controller.abort();
     };
-  }, [categoriesReloadUrl]);
+  }, []);
 
   return {
-    categoriesUrl,
-    setCategoriesReloadUrl,
     categories,
     categoriesError,
     setCategoriesError,
