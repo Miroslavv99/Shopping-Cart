@@ -8,8 +8,13 @@ import ProductsList from "../../components/ProductsList/ProductsList";
 import ShopContext from "../../contexts/ShopContext";
 
 function Shop() {
-  const { categories, categoriesError, setCategoriesError, categoriesLoading } =
-    useCategories();
+  const {
+    categories,
+    categoriesError,
+    setCategoriesError,
+    categoriesLoading,
+    getCategories,
+  } = useCategories();
 
   const {
     setProductsUrl,
@@ -17,6 +22,7 @@ function Shop() {
     productsError,
     setProductsError,
     productLoading,
+    getProductData,
   } = useProducts();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -28,10 +34,12 @@ function Shop() {
         setProductsUrl,
         categoriesError,
         categoriesLoading,
+        getCategories,
         productData,
         productsError,
         setProductsError,
         productLoading,
+        getProductData,
       }}
     >
       <div className={styles.shop}>

@@ -3,9 +3,10 @@ import styles from "./ProductsList.module.css";
 import ShopContext from "../../contexts/ShopContext";
 import CartContext from "../../contexts/CartContext";
 import { useContext } from "react";
+import ErrorState from "../ErrorState/ErrorState";
 
 function ProductsList() {
-  const { productData, productsError, setProductsError, productLoading } =
+  const { productData, productsError, productLoading } =
     useContext(ShopContext);
   const { addToCart } = useContext(CartContext);
 
@@ -14,7 +15,7 @@ function ProductsList() {
   return (
     <>
       {productsError ? (
-        <h1>ERROR</h1>
+        <ErrorState errorMessage={`PRODUCTS Error: ${productsError}`} />
       ) : (
         <div className={styles.products}>
           {productData.products.map((product) => {

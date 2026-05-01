@@ -20,6 +20,7 @@ const useProducts = () => {
 
       const parsedData = await response.json();
 
+      setProductsError(null);
       setProductData(parsedData);
     } catch (error) {
       if (error.name === "AbortError") return;
@@ -47,6 +48,7 @@ const useProducts = () => {
     productsError,
     setProductsError,
     productLoading,
+    getProductData,
   };
 };
 
