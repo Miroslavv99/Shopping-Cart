@@ -1,28 +1,15 @@
-import { useContext, useRef } from "react";
-import ShopContext from "../../contexts/ShopContext";
 import styles from "./ErrorState.module.css";
+import { useRef } from "react";
 
-function ErrorState({ errorMessage }) {
-  const { productsError, getProductData, categoriesError, getCategories } =
-    useContext(ShopContext);
-
-  const productsController = useRef(null);
-  const categoriesController = useRef(null);
+function ErrorState({ errorMessage, fetchData }) {
+  const controller = useRef(null);
 
   function reloadHandler() {
-    if (categoriesError) {
-      if (categoriesController.current) {
-        categoriesController.current.abort();
-      }
-      categoriesController.current = new AbortController();
-      getCategories(categoriesController.current);
-    } else {
-      if (productsController.current) {
-        productsController.current.abort();
-      }
-      productsController.current = new AbortController();
-      getProductData(productsController.current);
+    if (controller.current) {
+      controller.current.abort();
     }
+    controller.current = new AbortController();
+    fetchData(controller.current);
   }
 
   return (

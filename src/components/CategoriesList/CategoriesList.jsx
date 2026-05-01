@@ -8,7 +8,6 @@ function CategoriesList({ isOpen, setIsOpen }) {
     categories,
     setProductsUrl,
     categoriesError,
-    setCategoriesError,
     categoriesLoading,
     getCategories,
   } = useContext(ShopContext);
@@ -23,7 +22,10 @@ function CategoriesList({ isOpen, setIsOpen }) {
   return (
     <>
       {categoriesError ? (
-        <ErrorState errorMessage={`Categories Error: ${categoriesError}`} />
+        <ErrorState
+          errorMessage={`Categories Error: ${categoriesError}`}
+          fetchData={getCategories}
+        />
       ) : (
         <div
           className={

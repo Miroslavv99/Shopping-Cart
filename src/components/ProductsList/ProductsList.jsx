@@ -6,7 +6,7 @@ import { useContext } from "react";
 import ErrorState from "../ErrorState/ErrorState";
 
 function ProductsList() {
-  const { productData, productsError, productLoading } =
+  const { productData, productsError, productLoading, getProductData } =
     useContext(ShopContext);
   const { addToCart } = useContext(CartContext);
 
@@ -15,7 +15,10 @@ function ProductsList() {
   return (
     <>
       {productsError ? (
-        <ErrorState errorMessage={`PRODUCTS Error: ${productsError}`} />
+        <ErrorState
+          errorMessage={`PRODUCTS Error: ${productsError}`}
+          fetchData={getProductData}
+        />
       ) : (
         <div className={styles.products}>
           {productData.products.map((product) => {

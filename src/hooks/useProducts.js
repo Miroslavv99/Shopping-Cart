@@ -43,12 +43,11 @@ const useProducts = () => {
   }, [productsUrl]);
 
   return {
-    setProductsUrl,
     productData,
     productsError,
-    setProductsError,
     productLoading,
     getProductData,
+    setProductsUrl,
   };
 };
 

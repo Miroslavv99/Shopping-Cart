@@ -43,7 +43,6 @@ const useCategories = () => {
   return {
     categories,
     categoriesError,
-    setCategoriesError,
     categoriesLoading,
     getCategories,
   };

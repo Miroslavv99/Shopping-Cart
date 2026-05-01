@@ -8,21 +8,15 @@ import ProductsList from "../../components/ProductsList/ProductsList";
 import ShopContext from "../../contexts/ShopContext";
 
 function Shop() {
-  const {
-    categories,
-    categoriesError,
-    setCategoriesError,
-    categoriesLoading,
-    getCategories,
-  } = useCategories();
+  const { categories, categoriesError, categoriesLoading, getCategories } =
+    useCategories();
 
   const {
-    setProductsUrl,
     productData,
     productsError,
-    setProductsError,
     productLoading,
     getProductData,
+    setProductsUrl,
   } = useProducts();
 
   const [isOpen, setIsOpen] = useState(false);
@@ -37,7 +31,6 @@ function Shop() {
         getCategories,
         productData,
         productsError,
-        setProductsError,
         productLoading,
         getProductData,
       }}
