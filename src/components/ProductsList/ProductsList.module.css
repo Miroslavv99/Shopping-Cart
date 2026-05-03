@@ -8,5 +8,21 @@
 }
 
 .loading {
-  color: aliceblue;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+}
+
+.loadingLogo {
+  animation: loading 1s ease-out infinite normal forwards;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

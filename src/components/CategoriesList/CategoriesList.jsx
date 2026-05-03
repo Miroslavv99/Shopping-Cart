@@ -12,8 +12,6 @@ function CategoriesList({ isOpen, setIsOpen }) {
     getCategories,
   } = useContext(ShopContext);
 
-  if (categoriesLoading) return <span>loading...</span>;
-
   function handleCategory(url) {
     setProductsUrl(url);
     setIsOpen(!isOpen);
@@ -32,17 +30,21 @@ function CategoriesList({ isOpen, setIsOpen }) {
             isOpen ? `${styles.categories} ${styles.open}` : styles.categories
           }
         >
-          {categories.map((category) => {
-            return (
-              <button
-                className={styles.category}
-                onClick={() => handleCategory(category.url)}
-                key={category.slug}
-              >
-                {category.name}
-              </button>
-            );
-          })}
+          {categoriesLoading ? (
+            <span>loading...</span>
+          ) : (
+            categories.map((category) => {
+              return (
+                <button
+                  className={styles.category}
+                  onClick={() => handleCategory(category.url)}
+                  key={category.slug}
+                >
+                  {category.name}
+                </button>
+              );
+            })
+          )}
         </div>
       )}
     </>

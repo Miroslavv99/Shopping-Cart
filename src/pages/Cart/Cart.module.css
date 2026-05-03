@@ -33,12 +33,12 @@
 .cartItems {
   background-color: rgb(226, 226, 226);
   padding: 20px;
-  width: 70vw;
+  width: 60vw;
   max-height: fit-content;
 }
 
 .orderSummary {
-  width: 300px;
+  width: 40vw;
   height: 300px;
   background-color: rgb(225, 225, 225);
 }
