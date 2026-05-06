@@ -76,12 +76,7 @@ function Cart() {
       ) : (
         <>
           <div className={styles.cartItems}>
-            <h2>
-              Cart
-              <span className={styles.productsQuantity}>
-                {productsQuantity}
-              </span>
-            </h2>
+            <h2>Cart {productsQuantity}</h2>
             {cart.map((product) => {
               return (
                 <CartItem
@@ -95,10 +90,13 @@ function Cart() {
                 />
               );
             })}
-            <button onClick={clearCart}>DELETE CART</button>
+            <button className={styles.deleteButton} onClick={clearCart}>
+              EMPTY CART
+            </button>
           </div>
           <div className={styles.orderSummary}>
-            FOR PAYMENT: {productsPrice.toFixed(2)}
+            <h3>FOR PAYMENT: {Math.trunc(productsPrice)} $</h3>
+            <button onClick={clearCart}>BUY</button>
           </div>
         </>
       )}
