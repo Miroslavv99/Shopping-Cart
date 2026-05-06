@@ -1,28 +1,8 @@
 .products {
   display: grid;
-  padding: 3%;
+  min-height: 70vh;
+  padding: 0 3% 0 3%;
   grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-  align-items: center;
   justify-items: center;
   gap: 20px;
-}
-
-.loading {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: rgb(255, 255, 255);
-}
-
-.loadingLogo {
-  animation: loading 1s ease-out infinite normal forwards;
-}
-
-@keyframes loading {
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(360deg);
-  }
 }

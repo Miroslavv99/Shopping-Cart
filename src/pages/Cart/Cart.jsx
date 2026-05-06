@@ -76,7 +76,12 @@ function Cart() {
       ) : (
         <>
           <div className={styles.cartItems}>
-            <h2>Cart: {productsQuantity}</h2>
+            <h2>
+              Cart
+              <span className={styles.productsQuantity}>
+                {productsQuantity}
+              </span>
+            </h2>
             {cart.map((product) => {
               return (
                 <CartItem

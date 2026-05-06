@@ -1,7 +1,8 @@
+import { useContext } from "react";
 import styles from "./CategoriesList.module.css";
 import ShopContext from "../../contexts/ShopContext";
-import { useContext } from "react";
 import ErrorState from "../ErrorState/ErrorState";
+import Loading from "../Loading/Loading";
 
 function CategoriesList({ isOpen, setIsOpen }) {
   const {
@@ -17,6 +18,7 @@ function CategoriesList({ isOpen, setIsOpen }) {
     setIsOpen(!isOpen);
   }
 
+  if (categoriesLoading) return <Loading />;
   return (
     <>
       {categoriesError ? (

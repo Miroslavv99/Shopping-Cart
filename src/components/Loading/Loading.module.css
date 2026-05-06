@@ -1,0 +1,22 @@
+.loading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgb(255, 255, 255);
+  width: 100%;
+  height: 70vh;
+}
+
+.loadingLogo {
+  animation: loading 1s linear infinite;
+  transform-origin: center;
+}
+
+@keyframes loading {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

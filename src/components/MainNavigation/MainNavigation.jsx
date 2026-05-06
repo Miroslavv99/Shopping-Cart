@@ -1,6 +1,6 @@
 import { useContext } from "react";
-import styles from "./MainNavigation.module.css";
 import { Link } from "react-router";
+import styles from "./MainNavigation.module.css";
 import UiContext from "../../contexts/UiContext";
 
 function MainNavigation({ productsQuantity }) {
