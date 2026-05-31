@@ -1,7 +1,6 @@
 import "./App.css";
-import { useState } from "react";
+import { useState, useMemo, useReducer } from "react";
 import { Outlet } from "react-router";
-import { useReducer } from "react";
 import MainNavigation from "./components/MainNavigation/MainNavigation";
 import useCart from "./hooks/useCart";
 import useLocalStorage from "./hooks/useLocalStorage";
@@ -27,11 +26,13 @@ function App() {
     clearCart,
   } = useCart(cart, dispatch);
 
-  const productsQuantity = cart.reduce((acc, curr) => acc + curr.quantity, 0);
-  const productsPrice = cart.reduce(
-    (acc, curr) => acc + curr.price * curr.quantity,
-    0,
-  );
+  const productsQuantity = useMemo(() => {
+    return cart.reduce((acc, curr) => acc + curr.quantity, 0);
+  }, [cart]);
+
+  const productsPrice = useMemo(() => {
+    return cart.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
+  }, [cart]);
 
   return (
     <UiContext.Provider value={{ activeLink, setActiveLink }}>

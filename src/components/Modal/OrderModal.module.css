@@ -1,0 +1,15 @@
+.orderModal {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(81, 81, 81, 0.377);
+}
+
+.modalContent {
+  position: relative;
+  top: 20vh;
+  background-color: rgb(255, 255, 255);
+  width: 40vw;
+  height: 25vh;
+}

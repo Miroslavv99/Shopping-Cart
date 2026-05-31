@@ -37,7 +37,7 @@ function CartItem({
       </p>
       <div className={styles.quantitySelection}>
         <p className={styles.name}>Quantity:</p>
-        <button onClick={() => increaseQuantity(product)}>
+        <button onClick={() => decreaseQuantity(product)}>
           <svg
             width="20px"
             height="20px"
@@ -54,7 +54,7 @@ function CartItem({
             <g id="SVGRepo_iconCarrier">
               {" "}
               <path
-                d="M15 12L12 12M12 12L9 12M12 12L12 9M12 12L12 15"
+                d="M15 12H9"
                 stroke="#7a7a7a"
                 stroke-width="1.5"
                 stroke-linecap="round"
@@ -75,7 +75,7 @@ function CartItem({
           max={20}
           onChange={handleQuantityInput}
         />
-        <button onClick={() => decreaseQuantity(product)}>
+        <button onClick={() => increaseQuantity(product)}>
           <svg
             width="20px"
             height="20px"
@@ -92,7 +92,7 @@ function CartItem({
             <g id="SVGRepo_iconCarrier">
               {" "}
               <path
-                d="M15 12H9"
+                d="M15 12L12 12M12 12L9 12M12 12L12 9M12 12L12 15"
                 stroke="#7a7a7a"
                 stroke-width="1.5"
                 stroke-linecap="round"

@@ -8,7 +8,6 @@ const useCart = (cart, dispatch) => {
   }
 
   function increaseQuantity(product) {
-    if (product.quantity >= 20) return;
     dispatch({
       type: "increase_quantity",
       product: product,
@@ -16,14 +15,10 @@ const useCart = (cart, dispatch) => {
   }
 
   function decreaseQuantity(product) {
-    if (product.quantity > 1) {
-      dispatch({
-        type: "decrease_quantity",
-        product: product,
-      });
-    } else {
-      deleteProduct(product);
-    }
+    dispatch({
+      type: "decrease_quantity",
+      product: product,
+    });
   }
 
   function deleteProduct(product) {
@@ -34,14 +29,10 @@ const useCart = (cart, dispatch) => {
   }
 
   function addToCart(product) {
-    if (product.quantity > 0) {
-      increaseQuantity(product);
-    } else {
-      dispatch({
-        type: "add_to_cart",
-        product: product,
-      });
-    }
+    dispatch({
+      type: "add_to_cart",
+      product: product,
+    });
   }
 
   function clearCart() {

@@ -1,8 +1,9 @@
 import { Link } from "react-router";
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import CartContext from "../../contexts/CartContext";
 import UiContext from "../../contexts/UiContext";
 import CartItem from "../../components/CartItem/CartItem";
+import OrderModal from "../../components/Modal/OrderModal";
 import styles from "./Cart.module.css";
 
 function Cart() {
@@ -18,6 +19,13 @@ function Cart() {
     productsPrice,
     clearCart,
   } = useContext(CartContext);
+
+  const [showModal, setShowModal] = useState(false);
+
+  function orderHandler() {
+    setShowModal(true);
+    clearCart();
+  }
 
   return (
     <div className={styles.cart}>
@@ -96,10 +104,11 @@ function Cart() {
           </div>
           <div className={styles.orderSummary}>
             <h3>FOR PAYMENT: {Math.trunc(productsPrice)} $</h3>
-            <button onClick={clearCart}>BUY</button>
+            <button onClick={orderHandler}>BUY</button>
           </div>
         </>
       )}
+      {showModal ? <OrderModal setShowModal={setShowModal} /> : null}
     </div>
   );
 }

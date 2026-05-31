@@ -3,7 +3,7 @@ import CartContext from "../../contexts/CartContext";
 import { useContext } from "react";
 
 function ShopItem({ product }) {
-  const { images, title, price } = product;
+  const { images, title, price, quantity } = product;
   const { addToCart } = useContext(CartContext);
 
   return (
