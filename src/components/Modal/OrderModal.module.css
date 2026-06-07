@@ -7,9 +7,21 @@
 }
 
 .modalContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
   position: relative;
   top: 20vh;
   background-color: rgb(255, 255, 255);
   width: 40vw;
   height: 25vh;
+}
+
+.modalContent button {
+  cursor: pointer;
+  border: none;
+  text-decoration: none;
+  background-color: rgb(255, 255, 255);
 }

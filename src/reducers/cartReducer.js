@@ -22,17 +22,15 @@ const cartReducer = (cart, action) => {
       });
 
     case "decrease_quantity":
-      if (action.product.quantity > 1) {
-        return cart.map((item) => {
+      return cart
+        .map((item) => {
           if (item.id === action.product.id) {
             return { ...item, quantity: item.quantity - 1 };
           } else {
             return item;
           }
-        });
-      } else {
-        return cart.filter((item) => item.id !== action.product.id);
-      }
+        })
+        .filter((item) => item.quantity > 0);
 
     case "delete_product":
       return cart.filter((item) => item.id !== action.product.id);
